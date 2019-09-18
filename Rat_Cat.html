@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rat_Cat</title>
+</head>
+<body>
+<script>
+     let Rat = function (name,weight,speed,status) {
+         this.name =name;
+         this.weight =weight;
+         this.speed =speed;
+         this.status =status;
+         this.speak =function () {
+             return console.log(this.name+"chit chit")
+         };
+         this.chechStatus  = function () {
+             if(this.status){
+                 console.log(this.name+"is living")
+             }else{
+                 console.log(this.name+"is died")
+             }
+         }
+
+
+     };
+    let Cat =function (name,weight,maxSpeed) {
+            this.name =name ;
+            this.weight =weight;
+            this.maxSpeed =maxSpeed;
+            this.speak =function () {
+                return console.log(this.name+" meo meo")
+            };
+
+            this.RatcatchCat = function (nameRat) {
+                if(this.maxSpeed >nameRat.speed && nameRat.status){
+                   return true ;
+
+                }else{
+                    return false;
+                }
+            };
+            
+            this.CateatRat =function (nameRat,nameCat) {
+                    if(this.RatcatchCat(nameRat)){
+                        this.weight =this.weight + nameRat.weight;
+                        nameRat.status = false;
+                        console.log(this.name + "  "+"eat"+"  "+ nameRat.name);
+
+                    }else{
+                        alert(this.name +" not eat"+ nameRat.name);
+                    }
+                    console.log(this.name +" " +this.weight )
+            };
+                
+
+    }
+
+    let rat = new Rat("jerry",5,3,true);
+    // let nameRat ="jerry";
+    // let weightRat = 5;
+    // let speedRat = 5;
+    // let statusRat =true;
+    let cat = new Cat("tom",10,15);
+    // let nameCat ="tom";
+    // let weightCat = 10;
+    // let maxSpeedCat = 15;
+    rat.speak();
+    rat.chechStatus();
+
+    cat.RatcatchCat(rat);
+    cat.CateatRat(rat);
+    
+</script>
+</body>
+</html>
